@@ -8,7 +8,7 @@ function numberIsPrime(n) {
    return factor == n;
 }
 
-function f1(n) {
+function func(n) {
    let n1 = 1,
       n2 = 1,
       results = [];
@@ -34,9 +34,12 @@ function f1(n) {
 }
 
 console.time('Computational time');
-console.log('79777:', f1(79777)); // number is prime
+console.log('79777:', func(79777)); // number is prime
 console.timeEnd('Computational time');
+
 console.log('\n');
+
 console.time('Computational time');
-console.log('250:', f1(250));
+let n = 797777
+console.log(`${n}: `, func(n));
 console.timeEnd('Computational time');
