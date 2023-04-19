@@ -1,13 +1,13 @@
 // Find multiplicators of multiplication with different complexity algorithms
 
 // HELPERS
-function checkIfNumberIsPrime(n) {
-   let factor = 2;
-   while (n % factor != 0) factor++;
-   return factor == n;
-}
-
 function ifNumberIsPrimeReturn(n) {
+   const checkIfNumberIsPrime = (n) => {
+      let factor = 2;
+      while (n % factor != 0) factor++;
+      return factor == n;
+   };
+
    if (checkIfNumberIsPrime(n))
       return [
          { factor_1: 1, factor_2: n },
@@ -75,16 +75,17 @@ function func3(n) {
 // TEST --------------------------------------------------------------------------
 
 let numPrime = 79777,
-   numNotPrime = 73_958_673_564_259_834;
+   numNotPrime = 441_673_564_259_834;
 
-// // // Number is prime
+// //  Number is prime
 // console.time('Computational time');
 // console.log(`FUNC-1:\n ${numPrime}: `, func1(numPrime));
 // console.timeEnd('Computational time');
 
-console.log(
-   '----------------------------------------------------------------\n'
-);
+//
+//
+//
+//
 
 // // // FUNC 1: O(n^2) ------- Cazz se ce ne mette
 
@@ -92,22 +93,24 @@ console.log(
 // console.log(`FUNC-1:\n ${numNotPrime}: `, func1(numNotPrime));
 // console.timeEnd('Computational time');
 
-console.log(
-   '----------------------------------------------------------------\n'
-);
-
-// // // FUNC 2: O(n)
-
-// console.time('Computational time');
-// console.log(`FUNC-2:\n ${numNotPrime}: `, func2(numNotPrime));
-// console.timeEnd('Computational time');
-
-console.log(
-   '----------------------------------------------------------------\n'
-);
+//
+//
+//
+//
 
 // // // FUNC 3: O(sqrt(n))
 
 console.time('Computational time');
 console.log(`FUNC-3:\n ${numNotPrime}: `, func3(numNotPrime));
 console.timeEnd('Computational time');
+
+//
+//
+//
+//
+
+// // // FUNC 2: O(n) ------- Anche questa ce ne mette un bel po'
+
+// console.time('Computational time');
+// console.log(`FUNC-2:\n ${numNotPrime}: `, func2(numNotPrime));
+// console.timeEnd('Computational time');
