@@ -1,19 +1,19 @@
 {
-  "name": "js-multiplicators-algorithm",
-  "version": "1.0.0",
-  "description": "",
-  "main": "Multiplicators algorithm.js",
-  "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
-  },
-  "repository": {
-    "type": "git",
-    "url": "git+https://github.com/DavideDeLeonardis/JS-Multiplicators-algorithm.git"
-  },
-  "author": "",
-  "license": "ISC",
-  "bugs": {
-    "url": "https://github.com/DavideDeLeonardis/JS-Multiplicators-algorithm/issues"
-  },
-  "homepage": "https://github.com/DavideDeLeonardis/JS-Multiplicators-algorithm#readme"
+   "name": "js-multiplicators-algorithm",
+   "version": "1.0.0",
+   "description": "",
+   "main": "Multiplicators algorithm.js",
+   "scripts": {
+      "test": "echo \"Error: no test specified\" && exit 1"
+   },
+   "repository": {
+      "type": "git",
+      "url": "git+https://github.com/DavideDeLeonardis/JS-Multiplicators-algorithm.git"
+   },
+   "author": "",
+   "license": "ISC",
+   "bugs": {
+      "url": "https://github.com/DavideDeLeonardis/JS-Multiplicators-algorithm/issues"
+   },
+   "homepage": "https://github.com/DavideDeLeonardis/JS-Multiplicators-algorithm#readme"
 }

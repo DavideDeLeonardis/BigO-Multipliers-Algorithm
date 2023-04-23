@@ -16,7 +16,7 @@ function ifNumberIsPrimeReturn(n) {
 }
 
 // Time complexity func1: O(n^2)
-function func1(n) {
+export function func1(n) {
    ifNumberIsPrimeReturn(n);
 
    let n1 = 1,
@@ -38,7 +38,7 @@ function func1(n) {
 }
 
 // Time complexity func3: O(n)
-function func2(n) {
+export function func2(n) {
    ifNumberIsPrimeReturn(n);
 
    let i = 1,
@@ -59,7 +59,7 @@ function func2(n) {
 }
 
 // Time complexity func3: O(sqrt(n))
-function func3(n) {
+export function func3(n) {
    ifNumberIsPrimeReturn(n);
 
    let results = [];
@@ -75,7 +75,8 @@ function func3(n) {
 // TEST --------------------------------------------------------------------------
 
 let numPrime = 79777,
-   numNotPrime = 441_673_564_259_834;
+   // numNotPrime = 441_673_564_259_834;
+	numNotPrime = 457222
 
 // //  Number is prime
 // console.time('Computational time');
@@ -98,19 +99,19 @@ let numPrime = 79777,
 //
 //
 
-// // // FUNC 3: O(sqrt(n))
-
-console.time('Computational time');
-console.log(`FUNC-3:\n ${numNotPrime}: `, func3(numNotPrime));
-console.timeEnd('Computational time');
-
-//
-//
-//
-//
-
 // // // FUNC 2: O(n) ------- Anche questa ce ne mette un bel po'
 
 // console.time('Computational time');
 // console.log(`FUNC-2:\n ${numNotPrime}: `, func2(numNotPrime));
 // console.timeEnd('Computational time');
+
+//
+//
+//
+//
+
+// // // FUNC 3: O(sqrt(n))
+
+console.time('Computational time');
+console.log(`FUNC-3:\n ${numNotPrime}: `, func3(numNotPrime));
+console.timeEnd('Computational time');
