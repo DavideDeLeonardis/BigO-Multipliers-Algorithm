@@ -75,8 +75,7 @@ export function func3(n) {
 // TEST --------------------------------------------------------------------------
 
 let numPrime = 79777,
-   // numNotPrime = 441_673_564_259_834;
-	numNotPrime = 457222
+   numNotPrime = 441_673_564_259_834;
 
 // //  Number is prime
 // console.time('Computational time');
