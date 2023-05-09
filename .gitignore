@@ -1,1 +1,5 @@
 /.DS_Store
+SITO.webloc
+.firebase
+.firebaserc
+.gitignore

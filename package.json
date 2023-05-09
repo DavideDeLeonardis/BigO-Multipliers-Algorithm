@@ -1,5 +1,5 @@
 {
-   "name": "js-multiplicators-algorithm",
+   "name": "big-o-multipliers-algorithm",
    "version": "1.0.0",
    "description": "",
    "main": "Multiplicators algorithm.js",
@@ -8,12 +8,12 @@
    },
    "repository": {
       "type": "git",
-      "url": "git+https://github.com/DavideDeLeonardis/JS-Multiplicators-algorithm.git"
+      "url": "git+https://github.com/DavideDeLeonardis/BigO-Multipliers-Algorithm.git"
    },
    "author": "",
    "license": "ISC",
    "bugs": {
-      "url": "https://github.com/DavideDeLeonardis/JS-Multiplicators-algorithm/issues"
+      "url": "https://github.com/DavideDeLeonardis/BigO-Multipliers-Algorithm/issues"
    },
-   "homepage": "https://github.com/DavideDeLeonardis/JS-Multiplicators-algorithm#readme"
+   "homepage": "https://github.com/DavideDeLeonardis/BigO-Multipliers-Algorithm#readme"
 }

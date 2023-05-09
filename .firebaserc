@@ -1,5 +1,5 @@
 {
-  "projects": {
-    "default": "multiplicator-algorithm"
-  }
+   "projects": {
+      "default": "multiplicator-algorithm"
+   }
 }
