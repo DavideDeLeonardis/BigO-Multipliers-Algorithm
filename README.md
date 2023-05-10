@@ -3,6 +3,6 @@
 
 <br>
 
--  [See site](https://json-visualizer545555.web.app/)
+-  [See site](https://multiplicator-algorithm.firebaseapp.com/)
 
 <img src="./image.png" alt='Image visualizer'/>
