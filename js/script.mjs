@@ -42,7 +42,8 @@ function runFunctionAndCalculateTime() {
 
       time.innerHTML = `
 			Algorithm time: <br />
-			- Function with complexity <u>${complexity}</u> took &nbsp;&nbsp;&nbsp;&nbsp; { ${finalTime} milliseconds } &nbsp;&nbsp;&nbsp;&nbsp; to execute.
+			- Function with complexity <u>${complexity}</u> 
+			took &nbsp;&nbsp;&nbsp;&nbsp; { ${finalTime} milliseconds } &nbsp;&nbsp;&nbsp;&nbsp; to execute.
 		`;
    }, 1);
 }
