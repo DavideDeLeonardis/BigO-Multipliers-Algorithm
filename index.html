@@ -11,17 +11,17 @@
 
    <body>
       <h1>Find Multiplicators</h1>
-      <span class="intro">INTRO</span>
+      <!-- <span class="intro">INTRO</span> -->
       <div class="container">
          <span>Choose Algorithm Complexity:</span>
          <select class="select mb20">
-            <option value="n-quadro">
+            <option value="O (n^2)">
                O (n^2) &nbsp;&nbsp;&nbsp; - SLOWEST
             </option>
-            <option value="n">
+            <option value="O (n)">
                O (n) &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; - MEDIUM
             </option>
-            <option value="radice-n" selected>
+            <option value="O (√n)" selected>
                O (√n) &nbsp;&nbsp;&nbsp;&nbsp;&nbsp; - FASTEST
             </option>
          </select>
@@ -38,7 +38,8 @@
          </div>
          <div class="mb50">
             <input type="text" class="input" placeholder="Insert a number" />
-            <button class="button">FIND!</button>
+            <button class="button mb20">FIND!</button>
+            <div class="previousNumber"></div>
          </div>
          <div class="possibilities mb20"></div>
          <div class="time mb20"></div>

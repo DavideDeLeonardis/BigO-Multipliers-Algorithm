@@ -3,6 +3,7 @@ import { func1, func2, func3 } from './Multiplicators algorithm.mjs';
 const select = document.querySelector('.select'),
    input = document.querySelector('.input'),
    button = document.querySelector('.button'),
+   previousNumber = document.querySelector('.previousNumber'),
    results = document.querySelector('.results'),
    possibilities = document.querySelector('.possibilities'),
    time = document.querySelector('.time');
@@ -10,7 +11,7 @@ const select = document.querySelector('.select'),
 window.onload = () => input.focus();
 
 // Choose complexity
-let complexity = 'radice-n';
+let complexity = 'O (√n)';
 select.addEventListener('change', (e) => {
    complexity = e.target.value;
    input.focus();
@@ -39,7 +40,10 @@ function runFunctionAndCalculateTime() {
       const endTime = performance.now();
       const finalTime = (endTime - startTime).toFixed(5);
 
-      time.innerHTML = `Algorithm time: <br /> - Function took &nbsp;&nbsp;&nbsp;&nbsp; { ${finalTime} milliseconds } &nbsp;&nbsp;&nbsp;&nbsp; to execute.`;
+      time.innerHTML = `
+			Algorithm time: <br />
+			- Function with complexity <u>${complexity}</u> took &nbsp;&nbsp;&nbsp;&nbsp; { ${finalTime} milliseconds } &nbsp;&nbsp;&nbsp;&nbsp; to execute.
+		`;
    }, 1);
 }
 
@@ -48,17 +52,18 @@ function findMultipliers() {
       output = [];
 
    // Find multipliers
-   if (complexity === 'n-quadro') output = func1(input.value);
-   else if (complexity === 'n') output = func2(input.value);
-   else if (complexity === 'radice-n') output = func3(input.value);
+   if (complexity === 'O (n^2)') output = func1(input.value);
+   else if (complexity === 'O (n)') output = func2(input.value);
+   else if (complexity === 'O (√n)') output = func3(input.value);
 
    for (let i = 0; i < output.length; i++)
-      multipliers += `Factor 1: ${output[i].factor_1}, &nbsp;&nbsp; Factor 2: ${output[i].factor_2}<br>`;
+      multipliers += `Factor 1: &nbsp; ${output[i].factor_1}, &nbsp; Factor 2:&nbsp;&nbsp; ${output[i].factor_2}<br>`;
 
    // Insert in HTML
    results.innerHTML = multipliers;
    results.style.border = '1px solid lightgray';
-   possibilities.innerHTML = `${output.length} multipliers available`;
+   possibilities.innerHTML = `${output.length} multipliers couples available`;
+   previousNumber.innerHTML = `Previous number: <u>${input.value}</u>`;
 
    // Clear input
    input.value = '';
