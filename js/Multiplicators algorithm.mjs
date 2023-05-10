@@ -3,7 +3,15 @@
 // Helpers functions
 import { ifNumberIsPrimeReturn, sortArr } from './helpers.mjs';
 
-// Time complexity func1: O(n^2)
+
+
+
+// Time complexity func1: O(n^2)     - SLOWEST
+/**
+ *
+ * @param {number} number
+ * @returns result[]
+ */
 export function func1(n) {
    ifNumberIsPrimeReturn(n);
 
@@ -25,7 +33,16 @@ export function func1(n) {
    return sortArr(results);
 }
 
-// Time complexity func3: O(n)
+
+
+
+
+// Time complexity func3: O(n)     - MEDIUM
+/**
+ *
+ * @param {number} number
+ * @returns result[]
+ */
 export function func2(n) {
    ifNumberIsPrimeReturn(n);
 
@@ -46,7 +63,16 @@ export function func2(n) {
    return sortArr(results);
 }
 
-// Time complexity func3: O(sqrt(n))
+
+
+
+
+// Time complexity func3: O(sqrt(n))     - FASTEST
+/**
+ *
+ * @param {number} number
+ * @returns result[]
+ */
 export function func3(n) {
    ifNumberIsPrimeReturn(n);
 
@@ -63,7 +89,15 @@ export function func3(n) {
    return sortArr(results);
 }
 
-// TEST --------------------------------------------------------------------------
+
+
+
+
+
+
+
+
+// TEST with NODE.JS --------------------------------------------------------------------------
 
 let numPrime = 79777,
    numNotPrime = 441_673_564_259_834;
@@ -104,6 +138,6 @@ let numPrime = 79777,
 
 // // // FUNC 3: O(sqrt(n))
 
-console.time('Computational time');
-console.log(`FUNC-3:\n ${numNotPrime}: `, func3(numNotPrime));
-console.timeEnd('Computational time');
+// console.time('Computational time');
+// console.log(`FUNC-3:\n ${numNotPrime}: `, func3(numNotPrime));
+// console.timeEnd('Computational time');

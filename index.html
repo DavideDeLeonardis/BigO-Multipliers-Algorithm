@@ -5,20 +5,44 @@
       <meta http-equiv="X-UA-Compatible" content="IE=edge" />
       <meta name="viewport" content="width=device-width, initial-scale=1.0" />
       <script src="./js/script.mjs" type="module" defer></script>
+      <link rel="stylesheet" href="./css/style.css" />
       <title>Find Multiplicators</title>
    </head>
 
    <body>
-      <h2>Find Multiplicators</h2>
-      <input type="text" class="input" placeholder="Insert a number" />
-      <button class="button">SEARCH!</button>
-      <br />
-      <br />
-      <div class="container"></div>
-      <br />
-      <div class="possibilities"></div>
-      <br />
-      <div>Algorithm time: O(sqrt(n))</div>
-      <div id="output"></div>
+      <h1>Find Multiplicators</h1>
+      <span class="intro">INTRO</span>
+      <div class="container">
+         <span>Choose Algorithm Complexity:</span>
+         <select class="select mb20">
+            <option value="n-quadro">
+               O (n^2) &nbsp;&nbsp;&nbsp; - SLOWEST
+            </option>
+            <option value="n">
+               O (n) &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; - MEDIUM
+            </option>
+            <option value="radice-n" selected>
+               O (√n) &nbsp;&nbsp;&nbsp;&nbsp;&nbsp; - FASTEST
+            </option>
+         </select>
+         <div class="warning">
+            - <strong>ATTENTION</strong>:
+            <div class="warning-text">
+               If you choose the worst complexity, so O(n^2), depending on the
+               magnitude of the number, the waiting time to find the multipliers
+               could be very long and could crash the browser.
+               <br />
+               With the worst complexity, so O(n^2), if you don't want your pc
+               to crash insert numbers with a maximum of 5 digits.
+            </div>
+         </div>
+         <div class="mb50">
+            <input type="text" class="input" placeholder="Insert a number" />
+            <button class="button">FIND!</button>
+         </div>
+         <div class="possibilities mb20"></div>
+         <div class="time mb20"></div>
+         <div class="results"></div>
+      </div>
    </body>
 </html>
