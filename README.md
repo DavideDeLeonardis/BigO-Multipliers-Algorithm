@@ -1,12 +1,12 @@
 # BigO Notation Multipliers-Algorithm
 
-## Choose the complexity of the algorithm and insert a number to find the multipliers of it.
+### Choose the complexity of the algorithm and insert a number to find the multipliers of it.
 
-## Understand better how <u>different time complexities impact on the same task.</u>
+### Understand better how <u>different time complexities impact on the same task.</u>
 
 <br />
 
-## - A higher complexity means more execution time, the complexity is O(√n) by default.
+### - A higher complexity means more execution time, the complexity is O(√n) by default.
 
 <br>
 
