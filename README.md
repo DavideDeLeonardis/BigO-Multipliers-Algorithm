@@ -15,6 +15,6 @@
 <br>
 <br>
 
--  [See site](https://multiplicator-algorithm.firebaseapp.com/)
+-  [See site](https://multiplicator-algorithm.web.app/)
 
 <img src="./image.png" alt='Image visualizer'/>
