@@ -9,8 +9,14 @@
    </head>
 
    <body>
-      <h1>Find Multiplicators</h1>
-      <span class="intro">INTRO</span>
+      <h1>Find Multipliers of a number</h1>
+      <div class="intro">
+         Insert a number and choose the complexity of the algorithm in order to
+         understand better how different algorithms impact on the same task.<br />
+         A higher complexity means more execution time, the complexity is O(√n)
+         by default.
+      </div>
+
       <div class="container">
          <span>Choose Algorithm Complexity:</span>
          <select class="select mb20">
@@ -39,6 +45,7 @@
             <input type="text" class="input" placeholder="Insert a number" />
             <button class="button mb20">FIND!</button>
             <div class="previousNumber"></div>
+            <div class="previousTime"></div>
          </div>
          <div class="possibilities mb20"></div>
          <div class="time mb20"></div>
@@ -47,6 +54,10 @@
    </body>
 
    <style>
+      .intro {
+         font-size: 19px;
+      }
+
       .container {
          font-size: 18px;
          margin-top: 50px;

@@ -4,14 +4,17 @@ const select = document.querySelector('.select'),
    input = document.querySelector('.input'),
    button = document.querySelector('.button'),
    previousNumber = document.querySelector('.previousNumber'),
+   previousTime = document.querySelector('.previousTime'),
    results = document.querySelector('.results'),
    possibilities = document.querySelector('.possibilities'),
    time = document.querySelector('.time');
 
+let complexity = 'O (√n)',
+   previousTimeValue;
+
 window.onload = () => input.focus();
 
 // Choose complexity
-let complexity = 'O (√n)';
 select.addEventListener('change', (e) => {
    complexity = e.target.value;
    input.focus();
@@ -39,6 +42,7 @@ function runFunctionAndCalculateTime() {
       findMultipliers();
       const endTime = performance.now();
       const finalTime = (endTime - startTime).toFixed(5);
+      previousTimeValue = (endTime - startTime).toFixed(5);
 
       time.innerHTML = `
 			Algorithm time: <br />
@@ -64,7 +68,9 @@ function findMultipliers() {
    results.innerHTML = multipliers;
    results.style.border = '1px solid lightgray';
    possibilities.innerHTML = `${output.length} multipliers couples available`;
-   previousNumber.innerHTML = `Previous number: <u>${input.value}</u>`;
+   previousNumber.innerHTML = `Number used: <u>${input.value}</u>`;
+   if (previousTimeValue)
+      previousTime.innerHTML = `Previous execution time: <u>${previousTimeValue}</u>`;
 
    // Clear input
    input.value = '';
