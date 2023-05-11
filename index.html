@@ -18,37 +18,48 @@
       </div>
 
       <div class="container">
-         <span>Choose Algorithm Complexity:</span>
+         <span>Choose Algorithm and Complexity:</span>
          <select class="select mb20">
             <option value="O (n^2)">
-               O (n^2) &nbsp;&nbsp;&nbsp; - SLOWEST
+               Function 1: &nbsp;&nbsp;&nbsp; O (n^2) &nbsp;&nbsp;&nbsp; -
+               SLOWEST
             </option>
             <option value="O (n)">
-               O (n) &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; - MEDIUM
+               Function 2: &nbsp;&nbsp;&nbsp; O (n)
+               &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; - MEDIUM
             </option>
-            <option value="O (√n)" selected>
-               O (√n) &nbsp;&nbsp;&nbsp;&nbsp;&nbsp; - FASTEST
+            <option value="O (√n)">
+               Function 3: &nbsp;&nbsp;&nbsp; O (√n)
+               &nbsp;&nbsp;&nbsp;&nbsp;&nbsp; - FAST / SLOWER than Function 4
+            </option>
+            <option value="O (√n) fastest" selected>
+               Function 4: &nbsp;&nbsp;&nbsp; O (√n)
+               &nbsp;&nbsp;&nbsp;&nbsp;&nbsp; - FASTEST
             </option>
          </select>
          <div class="warning">
             - <strong>ATTENTION</strong>:
             <div class="warning-text">
                If you choose the worst complexity, so O(n^2), depending on the
-               magnitude of the number, the waiting time to find the multipliers
+               magnitude of the input, the waiting time to find the multipliers
                could be very long and could crash the browser.
                <br />
                With the worst complexity, so O(n^2), if you don't want your pc
                to crash insert numbers with a maximum of 5 digits.
+               <br /><br />
+               - Complexity time is based on magnitude of the input, so
+               depending on how long the input is, slower functions could be
+               faster than the faster ones.
             </div>
          </div>
          <div class="mb50">
             <input type="text" class="input" placeholder="Insert a number" />
             <button class="button mb20">FIND!</button>
             <div class="previousNumber"></div>
-            <div class="previousTime"></div>
          </div>
          <div class="possibilities mb20"></div>
          <div class="time mb20"></div>
+         <div class="previousTime"></div>
          <div class="results"></div>
       </div>
    </body>

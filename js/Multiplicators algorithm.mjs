@@ -1,10 +1,10 @@
-// Find multiplicators of multiplication with different complexity algorithms
+// Find multipliers of multiplication with different complexity algorithms
 
 // Helpers functions
 import { ifNumberIsPrimeReturn, sortArr } from './helpers.mjs';
 
 
-
+// --------------------------------------------------------------------------------
 
 // Time complexity func1: O(n^2)     - SLOWEST
 /**
@@ -36,8 +36,9 @@ export function func1(n) {
 
 
 
+// --------------------------------------------------------------------------------
 
-// Time complexity func3: O(n)     - MEDIUM
+// Time complexity func2: O(n)     - MEDIUM
 /**
  *
  * @param {number} number
@@ -66,8 +67,9 @@ export function func2(n) {
 
 
 
+// --------------------------------------------------------------------------------
 
-// Time complexity func3: O(sqrt(n))     - FASTEST
+// Time complexity func3: O(sqrt(n))     - FAST / SLOWER THAN func4
 /**
  *
  * @param {number} number
@@ -92,6 +94,34 @@ export function func3(n) {
 
 
 
+// --------------------------------------------------------------------------------
+
+// Time complexity func4: O(sqrt(n))      - FASTEST
+/**
+ *
+ * @param {number} number
+ * @returns result[]
+ */
+export function func4(n) {
+	ifNumberIsPrimeReturn(n);
+
+	let results = [];
+
+	for (let i = 1; i <= Math.floor(Math.sqrt(n)); i++)
+		if (n % i === 0) {
+			const factor2 = n / i;
+
+			if (i !== factor2) results.push({ factor_1: i, factor_2: factor2 });
+			results.push({ factor_1: factor2, factor_2: i });
+		}
+	
+	return sortArr(results);
+}
+
+// --------------------------------------------------------------------------------
+
+
+
 
 
 
@@ -100,7 +130,7 @@ export function func3(n) {
 // TEST with NODE.JS --------------------------------------------------------------------------
 
 let numPrime = 79777,
-   numNotPrime = 441_673_564_259_834;
+   numNotPrime = 2222457346134;
 
 // //  Number is prime
 // console.time('Computational time');
@@ -136,8 +166,19 @@ let numPrime = 79777,
 //
 //
 
-// // // FUNC 3: O(sqrt(n))
+// // // FUNC 3: O(sqrt(n)) ------- Veloce
 
 // console.time('Computational time');
 // console.log(`FUNC-3:\n ${numNotPrime}: `, func3(numNotPrime));
 // console.timeEnd('Computational time');
+// console.log('');
+
+//
+//
+//
+//
+
+// // // FUNC 4: O(sqrt(n)) ------- Più veloce
+console.time('Computational time');
+console.log(`FUNC-4:\n ${numNotPrime}: `, func4(numNotPrime));
+console.timeEnd('Computational time');

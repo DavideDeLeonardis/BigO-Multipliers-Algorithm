@@ -1,15 +1,15 @@
-import { func1, func2, func3 } from './Multiplicators algorithm.mjs';
+import { func1, func2, func3, func4 } from './Multiplicators algorithm.mjs';
 
 const select = document.querySelector('.select'),
    input = document.querySelector('.input'),
    button = document.querySelector('.button'),
    previousNumber = document.querySelector('.previousNumber'),
    previousTime = document.querySelector('.previousTime'),
-   results = document.querySelector('.results'),
    possibilities = document.querySelector('.possibilities'),
-   time = document.querySelector('.time');
+   time = document.querySelector('.time'),
+   results = document.querySelector('.results');
 
-let complexity = 'O (√n)',
+let complexity = 'O (√n) fastest',
    previousTimeValue;
 
 window.onload = () => input.focus();
@@ -60,18 +60,25 @@ function findMultipliers() {
    if (complexity === 'O (n^2)') output = func1(input.value);
    else if (complexity === 'O (n)') output = func2(input.value);
    else if (complexity === 'O (√n)') output = func3(input.value);
+   else if (complexity === 'O (√n) fastest') output = func4(input.value);
 
    for (let i = 0; i < output.length; i++)
       multipliers += `Factor 1: &nbsp; ${output[i].factor_1}, &nbsp; Factor 2:&nbsp;&nbsp; ${output[i].factor_2}<br>`;
 
-   // Insert in HTML
-   results.innerHTML = multipliers;
-   results.style.border = '1px solid lightgray';
-   possibilities.innerHTML = `${output.length} multipliers couples available`;
-   previousNumber.innerHTML = `Number used: <u>${input.value}</u>`;
-   if (previousTimeValue)
-      previousTime.innerHTML = `Previous execution time: <u>${previousTimeValue}</u>`;
+   displayResultsOnPage(multipliers, output);
 
    // Clear input
    input.value = '';
+}
+
+function displayResultsOnPage(multipliers, output) {
+   results.innerHTML = multipliers;
+   results.style.border = '1px solid lightgray';
+   possibilities.innerHTML = `${output.length} multipliers couples available`;
+   previousNumber.innerHTML = `
+		Number used${output.length === 2 ? ' is prime' : ''}: 
+		<u>${input.value}</u>
+	`;
+   if (previousTimeValue)
+      previousTime.innerHTML = `Previous execution time: <u>${previousTimeValue}</u>`;
 }
