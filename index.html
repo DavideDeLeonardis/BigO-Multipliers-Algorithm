@@ -55,12 +55,18 @@
          <div class="mb50">
             <input type="text" class="input" placeholder="Insert a number" />
             <button class="button mb20">FIND!</button>
-            <div class="previousNumber"></div>
+            <a
+               class="see_functions"
+               target="blank"
+               href="https://github.com/DavideDeLeonardis/BigO-Multipliers-Algorithm/blob/main/js/Multiplicators%20algorithm.mjs"
+               >SEE FUNCTIONS</a
+            >
+            <div class="usedNowNumber"></div>
          </div>
          <div class="possibilities mb20"></div>
          <div class="time mb20"></div>
-         <div class="previousTime"></div>
-         <div class="results"></div>
+         <div class="previousResearches">Previous researches: 0</div>
+         <div class="results">Results: 0</div>
       </div>
    </body>
 
@@ -107,6 +113,7 @@
          font-size: 17px;
          margin-top: 40px;
          padding: 10px;
+         border: 1px solid lightgray;
       }
 
       .mb20 {
@@ -115,6 +122,19 @@
 
       .mb50 {
          margin-bottom: 50px;
+      }
+
+      .see_functions {
+         color: inherit;
+         text-decoration: none;
+         margin-left: 50px;
+         padding: 6px 15px;
+         border: 1px solid gray;
+         transition: 200ms;
+      }
+
+      .see_functions:hover {
+         background-color: rgb(220, 220, 220);
       }
    </style>
 </html>
