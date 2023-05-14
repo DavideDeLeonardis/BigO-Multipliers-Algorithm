@@ -47,7 +47,10 @@ function runAndCalculateTime() {
       const startTime = performance.now();
       const { multipliers, output } = findMultipliers();
       const endTime = performance.now();
-      const finalTime = (endTime - startTime).toFixed(8);
+
+      let finalTime = (endTime - startTime).toFixed(8);
+      if (isNaN(Number(finalTime)) || finalTime == '0.00000000')
+         finalTime = '0.00000001';
 
       displayResultsOnPage(multipliers, output, finalTime);
       setPreviousState(finalTime);
