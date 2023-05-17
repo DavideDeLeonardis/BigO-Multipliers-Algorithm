@@ -25,16 +25,15 @@ selectHTML.addEventListener('change', (e) => {
 });
 
 // execute() on events with accessibility ('Enter' key)
-buttonHTML.addEventListener('click', () => execute());
+buttonHTML.addEventListener('click', execute);
 inputHTML.addEventListener('keydown', (e) => {
    if (e.keyCode === 13) execute();
 });
 
 async function execute() {
    const inputValue = inputHTML.value;
-   const { multipliers, output, finalTime } = await runAndCalculateTime(
-      inputValue
-   );
+   const responseObj = await runAndCalculateTime(inputValue);
+   const { multipliers, output, finalTime } = responseObj;
    displayResultsOnPage(inputValue, multipliers, output, finalTime);
    setPreviousState(inputValue, finalTime);
 }
