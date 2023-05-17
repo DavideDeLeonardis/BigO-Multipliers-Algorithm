@@ -9,8 +9,7 @@ const selectHTML = document.querySelector('.select'),
    timeHTML = document.querySelector('.time'),
    resultsHTML = document.querySelector('.results');
 
-let inputValue = '',
-   complexity = 'O (√n) fastest',
+let complexity = 'O (√n) fastest',
    previousState = {
       previousInput: '',
       previousComplexity: '',
@@ -19,45 +18,49 @@ let inputValue = '',
 
 window.onload = () => inputHTML.focus();
 
-// Choose complexity
+// Select complexity
 selectHTML.addEventListener('change', (e) => {
    complexity = e.target.value;
    inputHTML.focus();
 });
 
-// Init search and accessibility (with 'Enter' key)
-buttonHTML.addEventListener('click', () => {
-   inputValue = inputHTML.value;
-   runAndCalculateTime();
-});
+// execute() on events with accessibility ('Enter' key)
+buttonHTML.addEventListener('click', () => execute());
 inputHTML.addEventListener('keydown', (e) => {
-   if (e.keyCode === 13) {
-      inputValue = inputHTML.value;
-      runAndCalculateTime();
-   }
+   if (e.keyCode === 13) execute();
 });
 
-function runAndCalculateTime() {
+async function execute() {
+   const inputValue = inputHTML.value;
+   const { multipliers, output, finalTime } = await runAndCalculateTime(
+      inputValue
+   );
+   displayResultsOnPage(inputValue, multipliers, output, finalTime);
+   setPreviousState(inputValue, finalTime);
+}
+
+function runAndCalculateTime(inputValue) {
    if (inputValue === '' || isNaN(inputValue)) return;
 
    resultsHTML.innerHTML = 'Loading...';
 
    // Run findMultipliers(), calculate execution time
-   setTimeout(() => {
-      const startTime = performance.now();
-      const { multipliers, output } = findMultipliers();
-      const endTime = performance.now();
+   return new Promise((resolve) => {
+      setTimeout(() => {
+         const startTime = performance.now();
+         const { multipliers, output } = findMultipliers(inputValue);
+         const endTime = performance.now();
 
-      let finalTime = (endTime - startTime).toFixed(8);
-      if (isNaN(Number(finalTime)) || finalTime == '0.00000000')
-         finalTime = '0.00000001';
+         let finalTime = (endTime - startTime).toFixed(8);
+         if (isNaN(Number(finalTime)) || finalTime == '0.00000000')
+            finalTime = '0.00000001';
 
-      displayResultsOnPage(multipliers, output, finalTime);
-      setPreviousState(finalTime);
-   }, 1);
+         resolve({ multipliers, output, finalTime });
+      }, 1);
+   });
 }
 
-function findMultipliers() {
+function findMultipliers(inputValue) {
    let multipliers = '',
       output = [];
 
@@ -73,13 +76,13 @@ function findMultipliers() {
    return { multipliers, output };
 }
 
-function setPreviousState(finalTime) {
+function setPreviousState(inputValue, finalTime) {
    previousState.previousInput = inputValue;
    previousState.previousComplexity = complexity;
    previousState.previousTimeValue = finalTime;
 }
 
-function displayResultsOnPage(multipliers, output, finalTime) {
+function displayResultsOnPage(inputValue, multipliers, output, finalTime) {
    resultsHTML.innerHTML = multipliers;
    possibilitiesHTML.innerHTML = `${output.length} multipliers couples available`;
    usedNowNumber.innerHTML = `
