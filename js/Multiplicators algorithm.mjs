@@ -179,6 +179,6 @@ let numPrime = 79777,
 //
 
 // // // FUNC 4: O(sqrt(n)) ------- Più veloce
-console.time('Computational time');
-console.log(`FUNC-4:\n ${numNotPrime}: `, func4(numNotPrime));
-console.timeEnd('Computational time');
+// console.time('Computational time');
+// console.log(`FUNC-4:\n ${numNotPrime}: `, func4(numNotPrime));
+// console.timeEnd('Computational time');
