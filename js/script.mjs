@@ -40,6 +40,7 @@ async function main() {
 
 function runFindMultipliersAndCalcTime(inputValue) {
    if (inputValue === '' || isNaN(inputValue)) return;
+   else inputValue = Number(inputValue);
 
    resultsHTML.innerHTML = 'Loading...';
 
