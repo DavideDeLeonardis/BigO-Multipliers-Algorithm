@@ -4,12 +4,13 @@
       <meta charset="UTF-8" />
       <meta http-equiv="X-UA-Compatible" content="IE=edge" />
       <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-      <script src="./js/script.mjs" type="module" defer></script>
+      <script src="js/script.mjs" type="module" defer></script>
+      <link rel="stylesheet" href="css/style.css" />
       <title>Find Multiplicators</title>
    </head>
 
    <body>
-      <h1>Find Multipliers of a number</h1>
+      <h1 class="mb20">Find Multipliers of a number</h1>
       <div class="intro">
          Insert a number and choose the complexity of the algorithm in order to
          understand better how different algorithms impact on the same task.<br />
@@ -66,74 +67,9 @@
          <div class="time mb20"></div>
          <div class="previousResearches mb50">Previous researches: 0</div>
          <div class="possibilities mb20"></div>
-         <div class="results">Results: 0</div>
+         <ul class="results">
+            Results: 0
+         </ul>
       </div>
    </body>
-
-   <style>
-      .intro {
-         font-size: 19px;
-      }
-
-      .container {
-         font-size: 18px;
-         margin-top: 50px;
-      }
-
-      .select {
-         font-size: 16px;
-         margin-left: 10px;
-         padding: 5px;
-         cursor: pointer;
-      }
-
-      .warning {
-         color: red;
-         margin-bottom: 80px;
-      }
-
-      .warning-text {
-         padding-left: 30px;
-      }
-
-      .input {
-         height: 30px;
-         font-size: 16px;
-         padding-left: 5px;
-      }
-
-      .button {
-         width: 80px;
-         font-size: 17px;
-         padding: 6px;
-         cursor: pointer;
-      }
-
-      .results {
-         font-size: 17px;
-         padding: 10px;
-         border: 1px solid lightgray;
-      }
-
-      .mb20 {
-         margin-bottom: 20px;
-      }
-
-      .mb50 {
-         margin-bottom: 50px;
-      }
-
-      .see_functions {
-         color: inherit;
-         text-decoration: none;
-         margin-left: 50px;
-         padding: 6px 15px;
-         border: 1px solid gray;
-         transition: 200ms;
-      }
-
-      .see_functions:hover {
-         background-color: rgb(220, 220, 220);
-      }
-   </style>
 </html>
