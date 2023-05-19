@@ -34,8 +34,8 @@ async function main() {
    const inputValue = inputHTML.value;
 
    try {
-      const findMultResponse = await runFindMultipliersAndCalcTime(inputValue);
-      const { findMultOutput, executionTime } = findMultResponse;
+      const { findMultOutput, executionTime } =
+         await runFindMultipliersAndCalcTime(inputValue);
       displayResultsOnPage(inputValue, findMultOutput, executionTime);
       setPreviousState(inputValue, executionTime);
    } catch (e) {
@@ -116,11 +116,14 @@ function displayResultsOnPage(inputValue, findMultOutput, executionTime) {
 	`;
 
    if (previousState) {
+      const { previousInput, previousComplexity, previousExecutionTime } =
+         previousState;
+
       previousResearches.innerHTML = `
       	Previous research: <br />
-      	&nbsp; &nbsp; - input: ${previousState.previousInput}, <br />
-      	&nbsp; &nbsp; - complexity: ${previousState.previousComplexity}, <br />
-      	&nbsp; &nbsp; - execution time: ${previousState.previousExecutionTime} ms
+      	&nbsp; &nbsp; - input: ${previousInput}, <br />
+      	&nbsp; &nbsp; - complexity: ${previousComplexity}, <br />
+      	&nbsp; &nbsp; - execution time: ${previousExecutionTime} ms
     	`;
    }
 
