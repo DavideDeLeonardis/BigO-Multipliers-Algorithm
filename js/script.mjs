@@ -1,4 +1,9 @@
-import { func1, func2, func3, func4 } from './Multiplicators algorithm.mjs';
+import {
+   func1 as funcSlowest,
+   func2 as funcSlow,
+   func3 as funcFast,
+   func4 as funcFastest,
+} from './Multiplicators-algorithm.mjs';
 
 const selectHTML = document.querySelector('.select');
 const inputHTML = document.querySelector('.input');
@@ -68,13 +73,13 @@ function runFindMultipliersAndCalcTime(inputValue) {
 function findMultipliers(inputValue) {
    switch (complexity) {
       case 'O (n^2)':
-         return func1(inputValue);
+         return funcSlowest(inputValue);
       case 'O (n)':
-         return func2(inputValue);
+         return funcSlow(inputValue);
       case 'O (√n)':
-         return func3(inputValue);
+         return funcFast(inputValue);
       case 'O (√n) fastest':
-         return func4(inputValue);
+         return funcFastest(inputValue);
       default:
          return [];
    }
