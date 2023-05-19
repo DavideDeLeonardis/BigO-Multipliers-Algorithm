@@ -1,20 +1,15 @@
 import { func1, func2, func3, func4 } from './Multiplicators algorithm.mjs';
 
-const selectHTML = document.querySelector('.select'),
-   inputHTML = document.querySelector('.input'),
-   buttonHTML = document.querySelector('.button'),
-   usedNowNumber = document.querySelector('.usedNowNumber'),
-   previousResearches = document.querySelector('.previousResearches'),
-   possibilitiesHTML = document.querySelector('.possibilities'),
-   timeHTML = document.querySelector('.time'),
-   resultsHTML = document.querySelector('.results');
-
-let complexity = 'O (√n) fastest',
-   previousState = {
-      previousInput: '',
-      previousComplexity: '',
-      previousTimeValue: '',
-   };
+const selectHTML = document.querySelector('.select');
+const inputHTML = document.querySelector('.input');
+const buttonHTML = document.querySelector('.button');
+const usedNowNumber = document.querySelector('.usedNowNumber');
+const previousResearches = document.querySelector('.previousResearches');
+const possibilitiesHTML = document.querySelector('.possibilities');
+const timeHTML = document.querySelector('.time');
+const resultsHTML = document.querySelector('.results');
+let previousState = null;
+let complexity = 'O (√n) fastest';
 
 window.onload = () => inputHTML.focus();
 
@@ -32,83 +27,103 @@ inputHTML.addEventListener('keydown', (e) => {
 
 async function main() {
    const inputValue = inputHTML.value;
-   const findMultResponse = await runFindMultipliersAndCalcTime(inputValue);
-   const { findMultOutput, executionTime } = findMultResponse;
-   displayResultsOnPage(inputValue, findMultOutput, executionTime);
-   setPreviousState(inputValue, executionTime);
+
+   try {
+      const findMultResponse = await runFindMultipliersAndCalcTime(inputValue);
+      const { findMultOutput, executionTime } = findMultResponse;
+      displayResultsOnPage(inputValue, findMultOutput, executionTime);
+      setPreviousState(inputValue, executionTime);
+   } catch (e) {
+      console.error(e);
+   }
 }
 
 function runFindMultipliersAndCalcTime(inputValue) {
-   if (inputValue === '' || isNaN(inputValue)) return;
-   else inputValue = Number(inputValue);
+   if (inputValue === '' || isNaN(inputValue))
+      throw new Error('Invalid input.');
+
+   inputValue = Number(inputValue);
 
    resultsHTML.innerHTML = 'Loading...';
 
-   return new Promise((resolve) => {
+   return new Promise((resolve, reject) => {
       setTimeout(() => {
-         const startTime = performance.now();
-         const findMultOutput = findMultipliers(inputValue);
-         const endTime = performance.now();
+         try {
+            const startTime = performance.now();
+            const findMultOutput = findMultipliers(inputValue);
+            const endTime = performance.now();
 
-         let executionTime = (endTime - startTime).toFixed(8);
-         if (isNaN(Number(executionTime)) || executionTime == '0.00000000')
-            executionTime = '0.00000001';
+            let executionTime = (endTime - startTime).toFixed(8);
+            if (isNaN(Number(executionTime)) || executionTime == '0.00000000')
+               executionTime = '0.00000001';
 
-         resolve({ findMultOutput, executionTime });
+            resolve({ findMultOutput, executionTime });
+         } catch (error) {
+            reject(error);
+         }
       }, 1);
    });
 }
 
 function findMultipliers(inputValue) {
-   let findMultOutput = [];
-
-   if (complexity === 'O (n^2)') findMultOutput = func1(inputValue);
-   else if (complexity === 'O (n)') findMultOutput = func2(inputValue);
-   else if (complexity === 'O (√n)') findMultOutput = func3(inputValue);
-   else if (complexity === 'O (√n) fastest') findMultOutput = func4(inputValue);
-
-   return findMultOutput;
+   switch (complexity) {
+      case 'O (n^2)':
+         return func1(inputValue);
+      case 'O (n)':
+         return func2(inputValue);
+      case 'O (√n)':
+         return func3(inputValue);
+      case 'O (√n) fastest':
+         return func4(inputValue);
+      default:
+         return [];
+   }
 }
 
 function setPreviousState(inputValue, executionTime) {
-   previousState.previousInput = inputValue;
-   previousState.previousComplexity = complexity;
-   previousState.previousTimeValue = executionTime;
+   previousState = {
+      previousInput: inputValue,
+      previousComplexity: complexity,
+      previousExecutionTime: executionTime,
+   };
 }
 
 function displayResultsOnPage(inputValue, findMultOutput, executionTime) {
-   let multipliers = '';
-
-   for (let { factor_1, factor_2 } of findMultOutput)
-      multipliers += `
-			<li>
-				<ul>
-					<li>Factor 1: ${factor_1},</li>
-					<li>Factor 2: ${factor_2}</li>
-				</ul>
-			</li>
-		`;
+   const multipliers = findMultOutput
+      .map(
+         ({ factor_1, factor_2 }) => `
+    			<li>
+    			  	<ul>
+    			   	<li>Factor 1: ${factor_1}</li>
+    			    	<li>Factor 2: ${factor_2}</li>
+    			 	</ul>
+    			</li>
+  			`
+      )
+      .join('');
 
    resultsHTML.innerHTML = multipliers;
-   possibilitiesHTML.innerHTML = `${findMultOutput.length} multipliers couples available`;
+   possibilitiesHTML.textContent = `${findMultOutput.length} multiplier couples available`;
    usedNowNumber.innerHTML = `
-		Number used: <u>${inputValue}</u> &nbsp;&nbsp;&nbsp; ${
+		Number used: <u>${inputValue}</u> ${
       findMultOutput.length === 2 ? '--> is prime' : ''
    }
 	`;
 
-   if (previousState.previousTimeValue !== '')
-      previousResearches.innerHTML = `Previous research: <br />
-			&nbsp; &nbsp; - input: ${previousState.previousInput}, <br />
-			&nbsp; &nbsp; - complexity: ${previousState.previousComplexity}, <br />
-			&nbsp; &nbsp; - execution time: ${previousState.previousTimeValue} ms
-		`;
+   if (previousState) {
+      previousResearches.innerHTML = `
+      	Previous research: <br />
+      	&nbsp; &nbsp; - input: ${previousState.previousInput}, <br />
+      	&nbsp; &nbsp; - complexity: ${previousState.previousComplexity}, <br />
+      	&nbsp; &nbsp; - execution time: ${previousState.previousExecutionTime} ms
+    	`;
+   }
 
    timeHTML.innerHTML = `
-		Algorithm time: <br />
-		- Function with complexity <u>${complexity}</u> 
-		took &nbsp;&nbsp;&nbsp;&nbsp; { ${executionTime} ms } &nbsp;&nbsp;&nbsp;&nbsp; to main.
-	`;
+    	Algorithm time: <br />
+    	- Function with complexity <u>${complexity}</u> 
+    	took &nbsp;&nbsp;&nbsp;&nbsp; { ${executionTime} ms } &nbsp;&nbsp;&nbsp;&nbsp; to complete.
+  	`;
 
    inputHTML.value = '';
 }
