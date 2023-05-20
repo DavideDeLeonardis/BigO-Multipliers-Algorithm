@@ -16,7 +16,7 @@ const inputHTML: HTMLInputElement = document.querySelector('.input');
 const buttonHTML: HTMLButtonElement = document.querySelector('.button');
 const usedNowNumber: HTMLDivElement = document.querySelector('.usedNowNumber');
 const previousResearches: HTMLDivElement = document.querySelector('.previousResearches');
-const possibilitiesHTML: HTMLDivElement =document.querySelector('.possibilities');
+const possibilitiesHTML: HTMLDivElement = document.querySelector('.possibilities');
 const timeHTML: HTMLDivElement = document.querySelector('.time');
 const resultsHTML: HTMLUListElement = document.querySelector('.results');
 let previousState: previousStateType = null;
@@ -44,7 +44,7 @@ async function main(): Promise<void> {
 
    try {
       const { findMultOutput, executionTime }: resultFromRun =
-         await runFindMultipliersAndCalcTime(inputValue);
+         await runFindMultipliersAndCalcTime(inputValue as number);
       displayResultsOnPage(inputValue as number, findMultOutput, executionTime);
       setPreviousState(inputValue as number, executionTime);
    } catch (e) {
@@ -52,9 +52,7 @@ async function main(): Promise<void> {
    }
 }
 
-function runFindMultipliersAndCalcTime(
-   inputValue: any
-): Promise<resultFromRun> {
+function runFindMultipliersAndCalcTime(inputValue): Promise<resultFromRun> {
    if (inputValue === '' || isNaN(inputValue))
       throw new Error('Invalid input.');
 
