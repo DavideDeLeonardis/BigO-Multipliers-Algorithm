@@ -17,4 +17,4 @@
 
 -  [See site](https://multiplicator-algorithm.web.app/)
 
-<img src="./images/image.png" alt='Image visualizer'/>
+<img src="./src/images/image.png" alt='Image visualizer'/>

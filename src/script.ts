@@ -3,47 +3,58 @@ import {
    func2 as funcSlow,
    func3 as funcFast,
    func4 as funcFastest,
-} from './Multiplicators-algorithm.mjs';
+} from './Multiplicators-algorithm.js';
 
-const selectHTML = document.querySelector('.select');
-const inputHTML = document.querySelector('.input');
-const buttonHTML = document.querySelector('.button');
-const usedNowNumber = document.querySelector('.usedNowNumber');
-const previousResearches = document.querySelector('.previousResearches');
-const possibilitiesHTML = document.querySelector('.possibilities');
-const timeHTML = document.querySelector('.time');
-const resultsHTML = document.querySelector('.results');
-let previousState = null;
-let complexity = 'O (√n) fastest';
+import {
+   result,
+   resultFromRun,
+   previousState as previousStateType,
+} from './types/types';
 
-window.onload = () => inputHTML.focus();
+const selectHTML: HTMLSelectElement = document.querySelector('.select');
+const inputHTML: HTMLInputElement = document.querySelector('.input');
+const buttonHTML: HTMLButtonElement = document.querySelector('.button');
+const usedNowNumber: HTMLDivElement = document.querySelector('.usedNowNumber');
+const previousResearches: HTMLDivElement = document.querySelector('.previousResearches');
+const possibilitiesHTML: HTMLDivElement =document.querySelector('.possibilities');
+const timeHTML: HTMLDivElement = document.querySelector('.time');
+const resultsHTML: HTMLUListElement = document.querySelector('.results');
+let previousState: previousStateType = null;
+let complexity: string = 'O (√n) fastest';
+
+window.onload = (): void => inputHTML.focus();
 
 // Select complexity
-selectHTML.addEventListener('change', (e) => {
-   complexity = e.target.value;
-   inputHTML.focus();
-});
+selectHTML.addEventListener(
+   'change',
+   (e: Event & { target: HTMLSelectElement }): void => {
+      complexity = e.target.value;
+      inputHTML.focus();
+   }
+);
 
 // Run main() on click and 'Enter' key press
 buttonHTML.addEventListener('click', main);
-inputHTML.addEventListener('keydown', (e) => {
+inputHTML.addEventListener('keydown', (e: KeyboardEvent): void => {
    if (e.keyCode === 13) main();
 });
 
-async function main() {
-   const inputValue = inputHTML.value;
+async function main(): Promise<void> {
+   let inputValue: unknown = inputHTML.value;
 
    try {
-      const { findMultOutput, executionTime } =
+      const { findMultOutput, executionTime }: resultFromRun =
          await runFindMultipliersAndCalcTime(inputValue);
-      displayResultsOnPage(inputValue, findMultOutput, executionTime);
-      setPreviousState(inputValue, executionTime);
+      displayResultsOnPage(inputValue as number, findMultOutput, executionTime);
+      setPreviousState(inputValue as number, executionTime);
    } catch (e) {
       console.error(e);
    }
 }
 
-function runFindMultipliersAndCalcTime(inputValue) {
+function runFindMultipliersAndCalcTime(
+   inputValue: any
+): Promise<resultFromRun> {
    if (inputValue === '' || isNaN(inputValue))
       throw new Error('Invalid input.');
 
@@ -54,12 +65,15 @@ function runFindMultipliersAndCalcTime(inputValue) {
    return new Promise((resolve, reject) => {
       setTimeout(() => {
          try {
-            const startTime = performance.now();
-            const findMultOutput = findMultipliers(inputValue);
-            const endTime = performance.now();
+            const startTime: number = performance.now();
+            const findMultOutput: result = findMultipliers(inputValue);
+            const endTime: number = performance.now();
 
-            let executionTime = (endTime - startTime).toFixed(8);
-            if (isNaN(Number(executionTime)) || executionTime == '0.00000000')
+            let executionTime: string | number | any = (
+               endTime - startTime
+            ).toFixed(8);
+
+            if (isNaN(executionTime) || executionTime == '0.00000000')
                executionTime = '0.00000001';
 
             resolve({ findMultOutput, executionTime });
@@ -70,7 +84,7 @@ function runFindMultipliersAndCalcTime(inputValue) {
    });
 }
 
-function findMultipliers(inputValue) {
+function findMultipliers(inputValue: number): result {
    switch (complexity) {
       case 'O (n^2)':
          return funcSlowest(inputValue);
@@ -85,7 +99,7 @@ function findMultipliers(inputValue) {
    }
 }
 
-function setPreviousState(inputValue, executionTime) {
+function setPreviousState(inputValue: number, executionTime: number): void {
    previousState = {
       previousInput: inputValue,
       previousComplexity: complexity,
@@ -93,8 +107,12 @@ function setPreviousState(inputValue, executionTime) {
    };
 }
 
-function displayResultsOnPage(inputValue, findMultOutput, executionTime) {
-   const multipliers = findMultOutput
+function displayResultsOnPage(
+   inputValue: number,
+   findMultOutput: result,
+   executionTime: number
+) {
+   const multipliers: string = findMultOutput
       .map(
          ({ factor_1, factor_2 }) => `
     			<li>

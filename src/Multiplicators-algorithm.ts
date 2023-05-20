@@ -1,23 +1,24 @@
 // Find multipliers of multiplication with different complexity algorithms
 
 // Helpers functions
-import { ifNumberIsPrimeReturn, sortArr } from './helpers.mjs';
+import { ifNumberIsPrimeReturn, sortArr } from './helpers.js';
 
+import { result } from './types/types';
 
 // --------------------------------------------------------------------------------
 
 // Time complexity func1: O(n^2)     - SLOWEST
 /**
  *
- * @param {number} number
+ * @param {number} n
  * @returns result[]
  */
-export function func1(n) {
+export function func1(n: number): result {
    ifNumberIsPrimeReturn(n);
 
    let n1 = 1,
       n2 = 1,
-      results = [];
+      results: result = [];
 
    for (let i = 1; i <= n; i++) {
       n1 = i;
@@ -33,22 +34,19 @@ export function func1(n) {
    return sortArr(results);
 }
 
-
-
-
 // --------------------------------------------------------------------------------
 
 // Time complexity func2: O(n)     - MEDIUM
 /**
  *
- * @param {number} number
+ * @param {number} n
  * @returns result[]
  */
-export function func2(n) {
+export function func2(n: number): result {
    ifNumberIsPrimeReturn(n);
 
    let i = 1,
-      results = [],
+      results: result = [],
       j = n;
 
    while (i <= j) {
@@ -64,21 +62,18 @@ export function func2(n) {
    return sortArr(results);
 }
 
-
-
-
 // --------------------------------------------------------------------------------
 
 // Time complexity func3: O(sqrt(n))     - FAST / SLOWER THAN func4
 /**
  *
- * @param {number} number
+ * @param {number} n
  * @returns result[]
  */
-export function func3(n) {
+export function func3(n: number): result {
    ifNumberIsPrimeReturn(n);
 
-   let results = [];
+   let results: result = [];
 
    for (let i = 1; i <= Math.floor(Math.sqrt(n)); i++)
       if (n % i === 0)
@@ -91,41 +86,31 @@ export function func3(n) {
    return sortArr(results);
 }
 
-
-
-
 // --------------------------------------------------------------------------------
 
 // Time complexity func4: O(sqrt(n))      - FASTEST
 /**
  *
- * @param {number} number
+ * @param {number} n
  * @returns result[]
  */
-export function func4(n) {
-	ifNumberIsPrimeReturn(n);
+export function func4(n: number): result {
+   ifNumberIsPrimeReturn(n);
 
-	let results = [];
+   let results: result = [];
 
-	for (let i = 1; i <= Math.floor(Math.sqrt(n)); i++)
-		if (n % i === 0) {
-			const factor2 = n / i;
+   for (let i = 1; i <= Math.floor(Math.sqrt(n)); i++)
+      if (n % i === 0) {
+         const factor2: number = n / i;
 
-			if (i !== factor2) results.push({ factor_1: i, factor_2: factor2 });
-			results.push({ factor_1: factor2, factor_2: i });
-		}
-	
-	return sortArr(results);
+         if (i !== factor2) results.push({ factor_1: i, factor_2: factor2 });
+         results.push({ factor_1: factor2, factor_2: i });
+      }
+
+   return sortArr(results);
 }
 
 // --------------------------------------------------------------------------------
-
-
-
-
-
-
-
 
 // TEST with NODE.JS --------------------------------------------------------------------------
 

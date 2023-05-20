@@ -3,3 +3,5 @@
 SITO.webloc
 .firebase
 .firebaserc
+node_modules
+dist

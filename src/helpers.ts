@@ -1,7 +1,9 @@
 // HELPERS
-export function ifNumberIsPrimeReturn(n) {
-   const checkIfNumberIsPrime = (n) => {
-      let factor = 2;
+import { result } from './types/types';
+
+export function ifNumberIsPrimeReturn(n: number): result {
+   const checkIfNumberIsPrime = (n: number) => {
+      let factor: number = 2;
       while (n % factor != 0) factor++;
       return factor == n;
    };
@@ -13,7 +15,7 @@ export function ifNumberIsPrimeReturn(n) {
       ];
 }
 
-export function sortArr(arr) {
+export function sortArr(arr: result): result {
    return arr.sort((a, b) => {
       if (a.factor_1 > b.factor_1) return 1;
       if (a.factor_1 < b.factor_1) return -1;
