@@ -3,7 +3,7 @@
 // Helpers functions
 import { ifNumberIsPrimeReturn, sortArr } from './helpers.js';
 
-import { result } from './types/types';
+import { result } from './types';
 
 // --------------------------------------------------------------------------------
 
@@ -11,7 +11,7 @@ import { result } from './types/types';
 /**
  *
  * @param {number} n
- * @returns result[]
+ * @returns results[]
  */
 export function func1(n: number): result {
    ifNumberIsPrimeReturn(n);
@@ -40,7 +40,7 @@ export function func1(n: number): result {
 /**
  *
  * @param {number} n
- * @returns result[]
+ * @returns results[]
  */
 export function func2(n: number): result {
    ifNumberIsPrimeReturn(n);
@@ -68,7 +68,7 @@ export function func2(n: number): result {
 /**
  *
  * @param {number} n
- * @returns result[]
+ * @returns results[]
  */
 export function func3(n: number): result {
    ifNumberIsPrimeReturn(n);
@@ -92,7 +92,7 @@ export function func3(n: number): result {
 /**
  *
  * @param {number} n
- * @returns result[]
+ * @returns results[]
  */
 export function func4(n: number): result {
    ifNumberIsPrimeReturn(n);
@@ -101,10 +101,10 @@ export function func4(n: number): result {
 
    for (let i = 1; i <= Math.floor(Math.sqrt(n)); i++)
       if (n % i === 0) {
-         const factor2: number = n / i;
+         const factor: number = n / i;
 
-         if (i !== factor2) results.push({ factor_1: i, factor_2: factor2 });
-         results.push({ factor_1: factor2, factor_2: i });
+         if (i !== factor) results.push({ factor_1: i, factor_2: factor });
+         results.push({ factor_1: factor, factor_2: i });
       }
 
    return sortArr(results);

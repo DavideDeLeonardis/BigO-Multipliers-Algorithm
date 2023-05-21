@@ -1,12 +1,14 @@
 export type result = { factor_1: number; factor_2: number }[];
 
+export type execTime = number | string;
+
 export type resultFromRun = {
    findMultOutput: result;
-   executionTime: number;
+   executionTime: execTime;
 };
 
 export type previousState = {
    previousInput: number;
    previousComplexity: string;
-   previousExecutionTime: number;
+   previousExecutionTime: execTime;
 };

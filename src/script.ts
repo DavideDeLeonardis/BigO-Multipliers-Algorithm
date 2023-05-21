@@ -8,8 +8,9 @@ import {
 import {
    result,
    resultFromRun,
+   execTime,
    previousState as previousStateType,
-} from './types/types';
+} from './types';
 
 const selectHTML: HTMLSelectElement = document.querySelector('.select');
 const inputHTML: HTMLInputElement = document.querySelector('.input');
@@ -40,23 +41,23 @@ inputHTML.addEventListener('keydown', (e: KeyboardEvent): void => {
 });
 
 async function main(): Promise<void> {
-   let inputValue: unknown = inputHTML.value;
+   let inputValue: number = Number(inputHTML.value);
 
    try {
       const { findMultOutput, executionTime }: resultFromRun =
-         await runFindMultipliersAndCalcTime(inputValue as number);
-      displayResultsOnPage(inputValue as number, findMultOutput, executionTime);
-      setPreviousState(inputValue as number, executionTime);
+         await runFindMultipliersAndCalcTime(inputValue);
+      displayResultsOnPage(inputValue, findMultOutput, executionTime);
+      setPreviousState(inputValue, executionTime);
    } catch (e) {
-      console.error(e);
+      alert('Insert a valid integer.');
    }
 }
 
-function runFindMultipliersAndCalcTime(inputValue): Promise<resultFromRun> {
-   if (inputValue === '' || isNaN(inputValue))
+function runFindMultipliersAndCalcTime(
+   inputValue: number
+): Promise<resultFromRun> {
+   if (!inputValue || !Number.isInteger(inputValue) || isNaN(inputValue))
       throw new Error('Invalid input.');
-
-   inputValue = Number(inputValue);
 
    resultsHTML.innerHTML = 'Loading...';
 
@@ -67,12 +68,10 @@ function runFindMultipliersAndCalcTime(inputValue): Promise<resultFromRun> {
             const findMultOutput: result = findMultipliers(inputValue);
             const endTime: number = performance.now();
 
-            let executionTime: string | number | any = (
-               endTime - startTime
-            ).toFixed(8);
+            let executionTime: execTime = (endTime - startTime).toFixed(8);
 
-            if (isNaN(executionTime) || executionTime == '0.00000000')
-               executionTime = '0.00000001';
+            if (isNaN(Number(executionTime)) || executionTime == '0.00000000')
+               executionTime = 0.00000001;
 
             resolve({ findMultOutput, executionTime });
          } catch (error) {
@@ -97,7 +96,7 @@ function findMultipliers(inputValue: number): result {
    }
 }
 
-function setPreviousState(inputValue: number, executionTime: number): void {
+function setPreviousState(inputValue: number, executionTime: execTime): void {
    previousState = {
       previousInput: inputValue,
       previousComplexity: complexity,
@@ -108,7 +107,7 @@ function setPreviousState(inputValue: number, executionTime: number): void {
 function displayResultsOnPage(
    inputValue: number,
    findMultOutput: result,
-   executionTime: number
+   executionTime: execTime
 ) {
    const multipliers: string = findMultOutput
       .map(
@@ -127,7 +126,7 @@ function displayResultsOnPage(
    possibilitiesHTML.textContent = `${findMultOutput.length} multiplier couples available`;
    usedNowNumber.innerHTML = `
 		Number used: <u>${inputValue}</u> ${
-      findMultOutput.length === 2 ? '--> is prime' : ''
+      findMultOutput.length <= 2 ? '--> is prime' : ''
    }
 	`;
 

@@ -13,6 +13,12 @@
 -  [Link to functions used](https://github.com/DavideDeLeonardis/BigO-Multipliers-Algorithm/blob/main/js/Multiplicators%20algorithm.mjs)
 
 <br>
+
+### Run or modify (in main directory): 
+```
+tsc -w
+```
+
 <br>
 
 -  [See site](https://multiplicator-algorithm.web.app/)
