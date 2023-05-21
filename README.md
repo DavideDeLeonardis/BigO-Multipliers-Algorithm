@@ -14,7 +14,11 @@
 
 <br>
 
-### Run or modify (in main directory): 
+### Install dependencies
+```
+npm install
+```
+### Run compiler (in main directory): 
 ```
 tsc -w
 ```
