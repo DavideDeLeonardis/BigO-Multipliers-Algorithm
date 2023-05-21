@@ -34,6 +34,10 @@ export function func1(n: number): result {
    return sortArr(results);
 }
 
+
+
+
+
 // --------------------------------------------------------------------------------
 
 // Time complexity func2: O(n)     - MEDIUM
@@ -62,6 +66,10 @@ export function func2(n: number): result {
    return sortArr(results);
 }
 
+
+
+
+
 // --------------------------------------------------------------------------------
 
 // Time complexity func3: O(sqrt(n))     - FAST / SLOWER THAN func4
@@ -85,6 +93,10 @@ export function func3(n: number): result {
 
    return sortArr(results);
 }
+
+
+
+
 
 // --------------------------------------------------------------------------------
 
@@ -111,6 +123,18 @@ export function func4(n: number): result {
 }
 
 // --------------------------------------------------------------------------------
+
+
+
+
+
+
+
+
+
+
+
+
 
 // TEST with NODE.JS --------------------------------------------------------------------------
 
