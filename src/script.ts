@@ -37,7 +37,7 @@ selectHTML.addEventListener(
 // Run main() on click and 'Enter' key press
 buttonHTML.addEventListener('click', main);
 inputHTML.addEventListener('keydown', (e: KeyboardEvent): void => {
-   if (e.keyCode === 13) main();
+   if (e.key === 'Enter') main();
 });
 
 async function main(): Promise<void> {
@@ -67,7 +67,6 @@ function runFindMultipliersAndCalcTime(
             const startTime: number = performance.now();
             const findMultOutput: result = findMultipliers(inputValue);
             const endTime: number = performance.now();
-
             let executionTime: execTime = (endTime - startTime).toFixed(8);
 
             if (isNaN(Number(executionTime)) || executionTime == '0.00000000')

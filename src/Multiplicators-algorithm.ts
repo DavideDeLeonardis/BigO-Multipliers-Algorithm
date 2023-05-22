@@ -51,7 +51,7 @@ export function func2(n: number): result {
 
    let i = 1,
       results: result = [],
-      j = n;
+      j: number = n;
 
    while (i <= j) {
       if (n % i === 0) results = [...results, { factor_1: i, factor_2: n / i }];
