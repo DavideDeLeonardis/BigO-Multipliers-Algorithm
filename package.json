@@ -1,8 +1,8 @@
 {
    "name": "big-o-multipliers-algorithm",
    "version": "1.0.0",
-   "description": "",
-   "main": "dist/script.js",
+   "description": "Find multipliers with different algorithms",
+   "main": "public/index.html",
    "scripts": {
       "test": "echo \"Error: no test specified\" && exit 1"
    },
@@ -10,7 +10,7 @@
       "type": "git",
       "url": "git+https://github.com/DavideDeLeonardis/BigO-Multipliers-Algorithm.git"
    },
-   "author": "",
+   "author": "DavideDeLeonardis",
    "license": "ISC",
    "bugs": {
       "url": "https://github.com/DavideDeLeonardis/BigO-Multipliers-Algorithm/issues"
