@@ -12,6 +12,7 @@
    },
    "author": "DavideDeLeonardis",
    "license": "ISC",
+   "type": "module",
    "bugs": {
       "url": "https://github.com/DavideDeLeonardis/BigO-Multipliers-Algorithm/issues"
    },

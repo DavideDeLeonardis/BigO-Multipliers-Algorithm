@@ -41,7 +41,7 @@ inputHTML.addEventListener('keydown', (e: KeyboardEvent): void => {
 });
 
 async function main(): Promise<void> {
-   let inputValue: number = Number(inputHTML.value);
+   let inputValue: number = +inputHTML.value;
 
    try {
       const { findMultOutput, executionTime }: resultFromRun =
@@ -67,10 +67,10 @@ function runFindMultipliersAndCalcTime(
             const startTime: number = performance.now();
             const findMultOutput: result = findMultipliers(inputValue);
             const endTime: number = performance.now();
-            let executionTime: execTime = (endTime - startTime).toFixed(8);
+            let executionTime: execTime = +(endTime - startTime).toFixed(8);
 
-            if (isNaN(Number(executionTime)) || executionTime == '0.00000000')
-               executionTime = 0.00000001;
+            if (isNaN(executionTime) || executionTime === 0)
+               executionTime = '0.00000001';
 
             resolve({ findMultOutput, executionTime });
          } catch (error) {
@@ -107,7 +107,7 @@ function displayResultsOnPage(
    inputValue: number,
    findMultOutput: result,
    executionTime: execTime
-) {
+): void {
    const multipliers: string = findMultOutput
       .map(
          ({ factor_1, factor_2 }) => `
@@ -125,7 +125,7 @@ function displayResultsOnPage(
    possibilitiesHTML.textContent = `${findMultOutput.length} multiplier couples available`;
    usedNowNumber.innerHTML = `
 		Number used: <u>${inputValue}</u> ${
-      findMultOutput.length <= 2 ? '--> is prime' : ''
+      findMultOutput.length === 2 ? '--> is prime' : ''
    }
 	`;
 
