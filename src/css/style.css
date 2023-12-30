@@ -70,14 +70,15 @@ ul {
 }
 
 .see_functions {
-   color: inherit;
+   color: rgb(255, 255, 255);
+   background-color: rgb(5, 125, 245);
    text-decoration: none;
    margin-left: 50px;
    padding: 6px 15px;
-   border: 1px solid gray;
+   border: none;
    transition: 200ms;
 }
 
 .see_functions:hover {
-   background-color: rgb(220, 220, 220);
+   background-color: rgb(45, 148, 251);
 }
