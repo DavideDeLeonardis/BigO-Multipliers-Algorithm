@@ -10,7 +10,7 @@
 
 <br>
 
--  [Link to functions used](https://github.com/DavideDeLeonardis/BigO-Multipliers-Algorithm/blob/main/js/Multiplicators%20algorithm.mjs)
+-  [Link to functions used](https://github.com/DavideDeLeonardis/BigO-Multipliers-Algorithm/blob/main/src/Multiplicators-algorithm.ts)
 
 <br>
 
@@ -22,6 +22,9 @@ npm install
 ```
 tsc -w
 ```
+<br>
+
+    Than open index.html
 
 <br>
 

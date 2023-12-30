@@ -22,10 +22,8 @@ export function func1(n: number): result {
 
    for (let i = 1; i <= n; i++) {
       n1 = i;
-
       for (let j = 1; j <= n; j++) {
          n2 = j;
-
          if (n1 * n2 == n)
             results = [...results, { factor_1: n1, factor_2: n2 }];
       }
@@ -114,7 +112,6 @@ export function func4(n: number): result {
    for (let i = 1; i <= Math.floor(Math.sqrt(n)); i++)
       if (n % i === 0) {
          const factor: number = n / i;
-
          if (i !== factor) results.push({ factor_1: i, factor_2: factor });
          results.push({ factor_1: factor, factor_2: i });
       }
